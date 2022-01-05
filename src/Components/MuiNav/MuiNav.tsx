@@ -35,6 +35,8 @@ export default function LabelBottomNavigation() {
         icon={<CodeIcon />}
       />
       <BottomNavigationAction
+        component={Link}
+        to="/about"
         label="About"
         value="About"
         icon={<AccountBoxIcon />}

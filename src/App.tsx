@@ -3,6 +3,7 @@ import Nav from "./Components/MuiNav/MuiNav";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FibBuzz from "./Components/FibBuzz/FibBuzz";
 import Info from "./Components/Info/Info";
+import About from "./Components/About/About";
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<FibBuzz />} />
           <Route path="info" element={<Info />} />
+          <Route path="about" element={<About />} />
         </Routes>
       </div>
     </BrowserRouter>
