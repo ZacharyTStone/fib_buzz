@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useRemark } from "react-remark";
 
 const Description = () => {
@@ -6,7 +6,7 @@ const Description = () => {
 
   useEffect(() => {
     setMarkdownSource("# markdown header");
-  }, []);
+  });
 
   return reactContent;
 };
