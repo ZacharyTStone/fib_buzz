@@ -35,16 +35,16 @@ export default function Result(props) {
           {props.array.map((row) => (
             <StyledTableRow key={row}>
               <td className="cell" align="center">
-                {row[0]}
+                {typeof row[0] === "number" ? row[0] : row[0][1]}
               </td>
               <td className="cell" align="center">
-                {row[1]}
+                {typeof row[1] === "number" ? row[1] : row[1][1]}
               </td>
               <td className="cell" align="center">
-                {row[2]}
+                {typeof row[2] === "number" ? row[2] : row[2][1]}
               </td>
               <td className="cell" align="center">
-                {row[3]}
+                {typeof row[3] === "number" ? row[3] : row[3][1]}
               </td>
             </StyledTableRow>
           ))}
