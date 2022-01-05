@@ -1,7 +1,6 @@
 import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import FolderIcon from "@mui/icons-material/Folder";
 import CodeIcon from "@mui/icons-material/Code";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link } from "react-router-dom";
