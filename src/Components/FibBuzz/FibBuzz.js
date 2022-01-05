@@ -113,7 +113,7 @@ const FibBuzz = () => {
             className="text-form"
             size="medium"
             type="number"
-            label="remainder =  0 for fib"
+            label="remainder test for fib"
             onChange={(e) => {
               if (e.target.value < 0) {
                 alert("Please enter a positive number");
@@ -131,7 +131,7 @@ const FibBuzz = () => {
             className="text-form"
             size="medium"
             type="number"
-            label="remainder =  0 for buzz"
+            label="remainder test for buzz"
             onChange={(e) => {
               if (e.target.value < 0) {
                 alert("Please enter a positive number");
@@ -186,7 +186,7 @@ const FibBuzz = () => {
           >
             {showNumbers
               ? "only show fib buzz text"
-              : "show fib and buzz + numbers"}
+              : "show 'fib' / 'buzz' + numbers"}
           </Button>
         </div>
       </form>

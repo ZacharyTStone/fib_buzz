@@ -2,10 +2,11 @@ import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import FolderIcon from "@mui/icons-material/Folder";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import CodeIcon from "@mui/icons-material/Code";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link } from "react-router-dom";
+import DisplaySettingsIcon from "@mui/icons-material/DisplaySettings";
+import PsychologyIcon from "@mui/icons-material/Psychology";
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState("recents");
@@ -23,26 +24,26 @@ export default function LabelBottomNavigation() {
       <BottomNavigationAction
         component={Link}
         to="/"
-        label="Recents"
-        value="recents"
-        icon={<RestoreIcon />}
+        label="Fib Buzz"
+        value="Fib Buzz"
+        icon={<DisplaySettingsIcon />}
       />
       <BottomNavigationAction
         component={Link}
         to="/info"
-        label="Favorites"
-        value="favorites"
-        icon={<FavoriteIcon />}
+        label="Code"
+        value="Code"
+        icon={<CodeIcon />}
       />
       <BottomNavigationAction
-        label="Nearby"
-        value="nearby"
-        icon={<LocationOnIcon />}
+        label="About"
+        value="About"
+        icon={<AccountBoxIcon />}
       />
       <BottomNavigationAction
-        label="Folder"
-        value="folder"
-        icon={<FolderIcon />}
+        label="Recursive"
+        value="Recursive"
+        icon={<PsychologyIcon />}
       />
     </BottomNavigation>
   );
