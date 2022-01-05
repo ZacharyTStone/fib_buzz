@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import FibBuzz from "./Components/FibBuzz/FibBuzz";
 import Info from "./Components/Info/Info";
 import About from "./Components/About/About";
+import Recursive from "./Components/Recursive/Recursive";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="/" element={<FibBuzz />} />
           <Route path="info" element={<Info />} />
           <Route path="about" element={<About />} />
+          <Route path="recursive" element={<Recursive />} />
         </Routes>
       </div>
     </BrowserRouter>

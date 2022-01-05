@@ -6,6 +6,7 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link } from "react-router-dom";
 import DisplaySettingsIcon from "@mui/icons-material/DisplaySettings";
 import PsychologyIcon from "@mui/icons-material/Psychology";
+import "./MuiNav.css";
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState("recents");
@@ -17,6 +18,7 @@ export default function LabelBottomNavigation() {
   return (
     <BottomNavigation
       sx={{ width: "100%" }}
+      className="MuiNav"
       value={value}
       onChange={handleChange}
     >
@@ -42,6 +44,8 @@ export default function LabelBottomNavigation() {
         icon={<AccountBoxIcon />}
       />
       <BottomNavigationAction
+        component={Link}
+        to="/recursive"
         label="Recursive"
         value="Recursive"
         icon={<PsychologyIcon />}

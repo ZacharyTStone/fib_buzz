@@ -1,5 +1,4 @@
 import Description from "./Description/Description";
-import Code from "./Code/Code";
 import "../Info/Info.css";
 const Info = () => {
   return (
@@ -8,9 +7,6 @@ const Info = () => {
       <div className="Info">
         <div className="description">
           <Description />
-        </div>
-        <div className="code">
-          <Code />
         </div>
       </div>
     </>
