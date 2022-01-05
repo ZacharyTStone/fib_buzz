@@ -12,11 +12,20 @@ const FibBuzz = () => {
   const [fib, setFib] = useState(3);
   const [buzz, setBuzz] = useState(5);
   const [iterations, setIterations] = useState(100);
+  const [showNumbers, setShowNumbers] = useState(false);
 
   const handleSubmit = () => {
     setFinalArr([]);
     setFibBuzzArr([]);
     fibBuzz();
+  };
+
+  const createFinalArr = (arr) => {
+    let finalArr = [];
+    for (let x = 0; x < iterations - 2; x += 4) {
+      finalArr.push(fibBuzzArr.slice(x, x + 4));
+    }
+    setFinalArr(finalArr);
   };
 
   const fibBuzz = () => {
@@ -39,21 +48,14 @@ const FibBuzz = () => {
       } else if (currentNum % buzz === 0) {
         currentNum = [currentNum, "buzz"];
       }
-
       fibBuzzArr.push(currentNum);
     }
 
-    // split the fizzbuzz array into nested arrays of 4 for the chart
-    let finalArr = [];
-    for (let x = 0; x < iterations - 2; x += 4) {
-      finalArr.push(fibBuzzArr.slice(x, x + 4));
-    }
-    setFinalArr(finalArr);
+    createFinalArr(fibBuzzArr);
   };
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log("refresh prevented");
     handleSubmit();
   };
 
@@ -149,9 +151,9 @@ const FibBuzz = () => {
             type="number"
             label="iterations"
             onChange={(e) => {
-              if (e.target.value.length > 4) {
+              if (e.target.value > 2000) {
                 alert(
-                  "wooo that's a lot of iterations! let's be nice to your lovely computer and do 9,999 or less iterations"
+                  "wooo that's a lot of iterations! let's be nice to your lovely computer and do 2,000 or less iterations"
                 );
                 e.target.value = 0;
                 setIterations(0);
@@ -166,18 +168,31 @@ const FibBuzz = () => {
             required
           ></TextField>
         </div>
-
-        <Button
-          color="primary"
-          variant="outlined"
-          id="submitBtn"
-          type="submit"
-          disabled={false}
-        >
-          Send
-        </Button>
+        <div className="button-div">
+          <Button
+            color="primary"
+            variant="outlined"
+            id="submitBtn"
+            type="submit"
+            disabled={false}
+          >
+            Calculate
+          </Button>
+          <Button
+            color="secondary"
+            variant="outlined"
+            id="showNumbersBtn"
+            onClick={() => setShowNumbers(!showNumbers)}
+          >
+            {showNumbers
+              ? "only show fib buzz text"
+              : "show fib and buzz + numbers"}
+          </Button>
+        </div>
       </form>
-      <Result array={finalArr} />
+      <div className="fib-buzz-container">
+        <Result array={finalArr} showNumbers={showNumbers} />
+      </div>
     </div>
   );
 };

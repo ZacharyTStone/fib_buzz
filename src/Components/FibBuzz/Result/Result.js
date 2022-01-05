@@ -1,6 +1,7 @@
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
+import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import "./Result.css";
 import TableRow from "@mui/material/TableRow";
@@ -19,21 +20,37 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export default function Result(props) {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ width: "100%" }} aria-label="customized table">
+      <Table sx={{ width: "fit-content" }} aria-label="customized table">
         <TableBody>
           {props.array.map((row) => (
             <StyledTableRow key={row}>
               <td className="cell" align="center">
-                {typeof row[0] === "number" ? row[0] : row[0][1]}
+                {typeof row[0] === "number"
+                  ? row[0].toExponential(4)
+                  : props.showNumbers
+                  ? `${row[0][0]} ${row[0][1]}`
+                  : row[0][1]}
               </td>
               <td className="cell" align="center">
-                {typeof row[1] === "number" ? row[1] : row[1][1]}
+                {typeof row[1] === "number"
+                  ? row[1].toExponential(4)
+                  : props.showNumbers
+                  ? `${row[1][0]}  ${row[1][1]}`
+                  : row[1][1]}
               </td>
               <td className="cell" align="center">
-                {typeof row[2] === "number" ? row[2] : row[2][1]}
+                {typeof row[2] === "number"
+                  ? row[2].toExponential(4)
+                  : props.showNumbers
+                  ? `${row[2][0]}  ${row[2][1]}`
+                  : row[2][1]}
               </td>
               <td className="cell" align="center">
-                {typeof row[3] === "number" ? row[3] : row[3][1]}
+                {typeof row[3] === "number"
+                  ? row[3].toExponential(4)
+                  : props.showNumbers
+                  ? `${row[3][0]}  ${row[3][1]}`
+                  : row[3][1]}
               </td>
             </StyledTableRow>
           ))}
