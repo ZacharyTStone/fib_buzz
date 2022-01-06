@@ -22,29 +22,37 @@ const Form = () => {
 
   const createFinalArr = (arr) => {
     let finalArr = [];
-    for (let x = 0; x < iterations - 2; x += 4) {
-      finalArr.push(fibBuzzArr.slice(x, x + 4));
+    for (let x = 0; x < iterations - 2; x += 3) {
+      finalArr.push({
+        id: x,
+        num1: showNumbers ? fibBuzzArr[x][0] : fibBuzzArr[x][1],
+        num2: showNumbers ? fibBuzzArr[x + 1][0] : fibBuzzArr[x + 1][1],
+        num3: showNumbers ? fibBuzzArr[x + 2][0] : fibBuzzArr[x + 2][1],
+      });
     }
     setFinalArr(finalArr);
   };
 
   const fibBuzz = () => {
-    fibBuzzArr.push([num1, ""]);
-    fibBuzzArr.push([num2, ""]);
+    fibBuzzArr.push([num1, num1]);
+    fibBuzzArr.push([num2, num2]);
+
+    //regex to find number from string
 
     for (let x = 1; x <= iterations - 1; x++) {
-      let currentNum = fibBuzzArr[x][0] + fibBuzzArr[x - 1][0];
+      let currentNum =
+        parseFloat(fibBuzzArr[x][0]) + parseFloat(fibBuzzArr[x - 1][0]);
 
       if (currentNum === Infinity) {
-        currentNum = [currentNum, "Infinity"];
+        currentNum = ["Infinity", "Infinity"];
       } else if (currentNum % fib === 0 && currentNum % buzz === 0) {
-        currentNum = [currentNum, "fib buzz"];
+        currentNum = [currentNum + " Fib Buzz", "Fib Buzz"];
       } else if (currentNum % fib === 0) {
-        currentNum = [currentNum, "fib"];
+        currentNum = [currentNum + " Fib ", "Fib"];
       } else if (currentNum % buzz === 0) {
-        currentNum = [currentNum, "buzz"];
+        currentNum = [currentNum + " Buzz", "Buzz"];
       } else {
-        currentNum = [currentNum, ""];
+        currentNum = [currentNum, currentNum];
       }
       fibBuzzArr.push(currentNum);
     }
@@ -180,16 +188,17 @@ const Form = () => {
             color="secondary"
             variant="outlined"
             id="showNumbersBtn"
-            onClick={() => setShowNumbers(!showNumbers)}
+            onClick={() => {
+              setShowNumbers(!showNumbers);
+            }}
           >
-            {showNumbers
-              ? "only show fib buzz text"
-              : "show 'fib' / 'buzz' + numbers"}
+            {" "}
+            {showNumbers ? "Hide Numbers" : "Show Numbers"}
           </Button>
         </div>
       </form>
       <div className="fib-buzz-container">
-        <Result array={finalArr} showNumbers={showNumbers} />
+        <Result finalArr={finalArr} />
       </div>
     </div>
   );

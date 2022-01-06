@@ -1,60 +1,44 @@
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableContainer from "@mui/material/TableContainer";
-import "./Result.css";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+import * as React from "react";
+import { DataGrid } from "@mui/x-data-grid";
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
+let columns = [
+  { field: "num1", headerName: "", flex: 1, align: "center" },
+  { field: "num2", headerName: "", flex: 1, align: "center" },
+  { field: "num3", headerName: "", flex: 1, align: "center" },
+];
 
-export default function Result(props) {
+let rows = [];
+
+export default function DataTable(props) {
+  rows = props.finalArr;
+
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ width: "fit-content" }} aria-label="customized table">
-        <TableBody>
-          {props.array.map((row) => (
-            <StyledTableRow key={row}>
-              <td className="cell" align="center">
-                {props.showNumbers
-                  ? `${row[0][0]} ${row[0][1]}`
-                  : row[0][1] === ""
-                  ? row[0][0]
-                  : row[0][1]}
-              </td>
-              <td className="cell" align="center">
-                {props.showNumbers
-                  ? `${row[1][0]} ${row[1][1]}`
-                  : row[1][1] === ""
-                  ? row[1][0]
-                  : row[1][1]}
-              </td>
-              <td className="cell" align="center">
-                {props.showNumbers
-                  ? `${row[2][0]}  ${row[2][1]}`
-                  : row[2][1] === ""
-                  ? row[2][0]
-                  : row[2][1]}
-              </td>
-              <td className="cell" align="center">
-                {props.showNumbers
-                  ? `${row[3][0]}  ${row[3][1]}`
-                  : row[3][1] === ""
-                  ? row[3][0]
-                  : row[3][1]}
-              </td>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div
+      style={{
+        width: "100vw",
+        height: "500px",
+        align: "center",
+      }}
+    >
+      <DataGrid
+        align="center"
+        cell--textCenter
+        columnBuffer={0}
+        disableExtendRowFullWidth={false}
+        autoPageSize={true}
+        disableColumnFilter={true}
+        disableColumnSort={true}
+        disableColumnSelector={true}
+        disableColumnMenu={true}
+        disableMultiSort={true}
+        onColumnHeaderClick={() => {}}
+        rows={rows}
+        columns={columns}
+        rowsPerPageOptions={[5]}
+        showPagination={true}
+        showPaginationTop={true}
+        loading={false}
+      />
+    </div>
   );
 }
