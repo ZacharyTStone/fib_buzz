@@ -29,15 +29,11 @@ const Form = () => {
   };
 
   const fibBuzz = () => {
-    fibBuzzArr.push(num1);
-    fibBuzzArr.push(num2);
+    fibBuzzArr.push([num1, ""]);
+    fibBuzzArr.push([num2, ""]);
 
-    for (let x = 0; x <= iterations - 2; x++) {
-      let currentNum =
-        (typeof fibBuzzArr[x] === "number" ? fibBuzzArr[x] : fibBuzzArr[x][0]) +
-        (typeof fibBuzzArr[x + 1] === "number"
-          ? fibBuzzArr[x + 1]
-          : fibBuzzArr[x + 1][0]);
+    for (let x = 1; x <= iterations - 1; x++) {
+      let currentNum = fibBuzzArr[x][0] + fibBuzzArr[x - 1][0];
 
       if (currentNum === Infinity) {
         currentNum = [currentNum, "Infinity"];
@@ -47,6 +43,8 @@ const Form = () => {
         currentNum = [currentNum, "fib"];
       } else if (currentNum % buzz === 0) {
         currentNum = [currentNum, "buzz"];
+      } else {
+        currentNum = [currentNum, ""];
       }
       fibBuzzArr.push(currentNum);
     }

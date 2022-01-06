@@ -24,31 +24,31 @@ export default function Result(props) {
           {props.array.map((row) => (
             <StyledTableRow key={row}>
               <td className="cell" align="center">
-                {typeof row[0] === "number"
-                  ? Math.round(row[0].toExponential(4))
-                  : props.showNumbers
+                {props.showNumbers
                   ? `${row[0][0]} ${row[0][1]}`
+                  : row[0][1] === ""
+                  ? row[0][0]
                   : row[0][1]}
               </td>
               <td className="cell" align="center">
-                {typeof row[1] === "number"
-                  ? Math.round(row[1].toExponential(4))
-                  : props.showNumbers
-                  ? `${row[1][0]}  ${row[1][1]}`
+                {props.showNumbers
+                  ? `${row[1][0]} ${row[1][1]}`
+                  : row[1][1] === ""
+                  ? row[1][0]
                   : row[1][1]}
               </td>
               <td className="cell" align="center">
-                {typeof row[2] === "number"
-                  ? Math.round(row[2].toExponential(4))
-                  : props.showNumbers
+                {props.showNumbers
                   ? `${row[2][0]}  ${row[2][1]}`
+                  : row[2][1] === ""
+                  ? row[2][0]
                   : row[2][1]}
               </td>
               <td className="cell" align="center">
-                {typeof row[3] === "number"
-                  ? Math.round(row[3].toExponential(4))
-                  : props.showNumbers
+                {props.showNumbers
                   ? `${row[3][0]}  ${row[3][1]}`
+                  : row[3][1] === ""
+                  ? row[3][0]
                   : row[3][1]}
               </td>
             </StyledTableRow>
