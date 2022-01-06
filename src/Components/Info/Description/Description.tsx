@@ -1,14 +1,11 @@
-import { useEffect } from "react";
-import { useRemark } from "react-remark";
+import Code from "../Code/Code";
 
 const Description = () => {
-  const [reactContent, setMarkdownSource] = useRemark();
-
-  useEffect(() => {
-    setMarkdownSource("# Markdown");
-  });
-
-  return reactContent;
+  return (
+    <>
+      <Code />
+    </>
+  );
 };
 
 export default Description;

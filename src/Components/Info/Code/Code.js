@@ -1,10 +1,12 @@
+import PrismCode from "../../Prism/PrismCode";
+const code = `
 import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import Result from "./Result/Result";
-import "./FibBuzz.css";
+import "./Form.css";
 
-const FibBuzz = () => {
+const Form = () => {
   const [num1, setNum1] = useState(1);
   const [num2, setNum2] = useState(1);
   const [fibBuzzArr, setFibBuzzArr] = useState([]);
@@ -197,4 +199,15 @@ const FibBuzz = () => {
   );
 };
 
-export default FibBuzz;
+export default Form;
+
+
+`;
+
+export default function Code() {
+  return (
+    <div className="App">
+      <PrismCode code={code} language="javascript" />
+    </div>
+  );
+}
