@@ -28,3 +28,7 @@
   height: 100%;
   flex-wrap: wrap;
 }
+
+.text-form {
+  min-width: 200px !important;
+}

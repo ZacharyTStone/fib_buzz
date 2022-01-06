@@ -5,7 +5,7 @@ const Description = () => {
   const [reactContent, setMarkdownSource] = useRemark();
 
   useEffect(() => {
-    setMarkdownSource("# markdown header 1\n\nmarkdown body");
+    setMarkdownSource("# Markdown");
   });
 
   return reactContent;
