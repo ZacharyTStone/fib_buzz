@@ -193,7 +193,7 @@ const Form = () => {
             }}
           >
             {" "}
-            {showNumbers ? "Hide Numbers" : "Show Numbers"}
+            {showNumbers ? "Hide Numbers " : "Show Numbers and Words"}
           </Button>
         </div>
       </form>
