@@ -1,5 +1,5 @@
 import "./App.css";
-import Nav from "./Components/UI/MuiNav/MuiNav";
+import Nav from "./Components/MuiNav/MuiNav";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Form from "./Components/FibBuzz/Form";
 import Info from "./Components/Info/Info";

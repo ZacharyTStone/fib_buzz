@@ -15,11 +15,12 @@ const Form = () => {
   const [iterations, setIterations] = useState(100);
   const [showNumbers, setShowNumbers] = useState(false);
   const [useBigInt, setUseBigInt] = useState(false);
-  const [started, setStarted] = useState(false);
+  const [showResultsComponent, setShowResultsComponent] = useState(false);
+  const [showOptionButtons, setShowOptionButtons] = useState(false);
 
   const handleSubmit = () => {
-    setFinalArr([]);
     setFibBuzzArr([]);
+    setFinalArr([]);
     fibBuzz();
   };
 
@@ -64,9 +65,6 @@ const Form = () => {
       for (let x = 1; x <= iterations - 1; x++) {
         let currentNum =
           parseFloat(fibBuzzArr[x][0]) + parseFloat(fibBuzzArr[x - 1][0]);
-        if (currentNum.length > 9) {
-          currentNum = currentNum.toPrecision(5);
-        }
 
         if (currentNum === Infinity) {
           currentNum = ["Infinity", "Infinity"];
@@ -88,7 +86,9 @@ const Form = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    setStarted(true);
+    if (!showResultsComponent) {
+      setShowResultsComponent(true);
+    }
     handleSubmit();
   };
 
@@ -203,50 +203,90 @@ const Form = () => {
             required
           ></TextField>
         </div>
-        <div className="button-div">
-          <Button
-            color="primary"
-            variant="outlined"
-            id="submitBtn"
-            type="submit"
-            disabled={false}
-          >
-            Calculate
-          </Button>
-          {!useBigInt ? (
-            <Button
-              color="primary"
-              variant="outlined"
-              id="showNumbersBtn"
-              onClick={() => {
-                setShowNumbers(!showNumbers);
-              }}
-            >
-              {" "}
-              {showNumbers
-                ? "Show only 'Fib' and 'Buzz'"
-                : "Include Numbers + 'fib' and 'buzz'"}
-            </Button>
-          ) : null}
+        <div className="top-button-div">
+          <div className="button-div">
+            {!showOptionButtons ? (
+              <Button
+                sx={{
+                  marginLeft: "10px",
+                  marginTop: "10px",
+                }}
+                variant="outlined"
+                color="secondary"
+                id="show option button"
+                onClick={() => {
+                  setShowOptionButtons(true);
+                }}
+              >
+                {" "}
+                Advanced Options{" "}
+              </Button>
+            ) : null}
+            {!useBigInt && showOptionButtons ? (
+              <Button
+                sx={{
+                  marginLeft: "10px",
+                  marginTop: "10px",
+                }}
+                color="secondary"
+                variant={showNumbers ? "contained" : "outlined"}
+                id="showNumbersBtn"
+                onClick={() => {
+                  setShowNumbers(!showNumbers);
+                }}
+              >
+                {" "}
+                {showNumbers
+                  ? "Show only 'Fib' and 'Buzz'"
+                  : "Include Numbers + 'fib' and 'buzz'"}
+              </Button>
+            ) : null}
+            {showOptionButtons ? (
+              <Button
+                sx={{
+                  marginLeft: "10px",
+                  marginTop: "10px",
+                }}
+                color="warning"
+                variant={useBigInt ? "contained" : "outlined"}
+                id="useBigIntBtn"
+                onClick={() => {
+                  setFinalArr([]);
+                  setFibBuzzArr([]);
+                  setUseBigInt(!useBigInt);
 
-          <Button
-            color="warning"
-            variant="outlined"
-            id="useBigIntBtn"
-            onClick={() => {
-              setFinalArr([]);
-              setFibBuzzArr([]);
-              setUseBigInt(!useBigInt);
-            }}
-          >
-            {useBigInt
-              ? "Go back to normal numbers"
-              : "enable BigInt and go past numbers larger than (2, 53) - 1"}
-          </Button>
+                  if (!useBigInt)
+                    alert(
+                      "Have fun calculating the fibonacci sequence with bigInt! Reaaaally big numbers!"
+                    );
+                }}
+              >
+                {useBigInt
+                  ? "Go back to normal numbers"
+                  : "Calculate fibonacci numbers with BigInt!"}
+              </Button>
+            ) : null}
+          </div>
+          <div className="button-div">
+            <Button
+              sx={{
+                marginTop: "10px",
+              }}
+              color="primary"
+              variant="contained"
+              id="submitBtn"
+              type="submit"
+              disabled={false}
+            >
+              Calculate
+            </Button>
+          </div>
         </div>
       </form>
       <div className="fib-buzz-container">
-        {started && <Result finalArr={finalArr} useBigInt={useBigInt} />}
+        {showResultsComponent && (
+          <Result finalArr={finalArr} useBigInt={useBigInt} />
+        )}
       </div>
     </div>
   );
