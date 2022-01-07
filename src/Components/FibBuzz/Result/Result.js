@@ -1,15 +1,19 @@
 import * as React from "react";
 import { DataGrid } from "@mui/x-data-grid";
 
-let columns = [
-  { field: "num1", headerName: "", flex: 1, align: "center" },
-  { field: "num2", headerName: "", flex: 1, align: "center" },
-  { field: "num3", headerName: "", flex: 1, align: "center" },
-];
+let columns = [];
 
 let rows = [];
 
 export default function DataTable(props) {
+  props.useBigInt
+    ? (columns = [{ field: "num1", headerName: "", flex: 1, align: "center" }])
+    : (columns = [
+        { field: "num1", headerName: "", flex: 1, align: "center" },
+        { field: "num2", headerName: "", flex: 1, align: "center" },
+        { field: "num3", headerName: "", flex: 1, align: "center" },
+      ]);
+
   rows = props.finalArr;
 
   return (

@@ -1,4 +1,4 @@
-import PrismCode from "../../Prism/PrismCode";
+import PrismCode from "../../UI/PrismCode";
 
 const code = `
 const magic = ()=> {
@@ -12,7 +12,7 @@ export default function CodeSnipit() {
   return (
     <div
       style={{
-        width: "50vw",
+        width: "100vw",
         height: "100%",
       }}
     >
