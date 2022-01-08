@@ -1,16 +1,22 @@
-import Description from "./Description/Description";
 import "../Info/Info.css";
+import PrismCode from "../UI/PrismCode";
+
+const code = `
+const magic = ()=> {
+  return fully functional 
+  and easy to use application
+}
+magic()
+`;
 
 const Info = () => {
   return (
-    <>
-      <h1>Info</h1>
-      <div className="Info">
-        <div className="description">
-          <Description />
-        </div>
+    <div className="Info">
+      <div className="left"></div>
+      <div className="right">
+        <PrismCode code={code} language="javascript" />;
       </div>
-    </>
+    </div>
   );
 };
 

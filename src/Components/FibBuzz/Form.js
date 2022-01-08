@@ -27,17 +27,22 @@ const Form = () => {
   const createFinalArr = (arr) => {
     let finalArr = [];
 
-    let num_columns = 3;
+    const num_columns = 3;
+
+    let data = {};
 
     for (let x = 0; x < iterations; x += num_columns) {
-      let data = { id: x };
+      data = { id: x };
       for (let i = 0; i < num_columns; ++i) {
-        if (x + i < iterations) data["num" + (i + 1)] = fibBuzzArr[x + i][0];
-        else data["num" + (i + 1)] = "";
+        if (x + i < iterations) {
+          data["num" + i] =
+            (showNumbers ? arr[x + i][0] : "") + fibBuzzArr[x + i][1];
+        } else data["num" + i] = "";
       }
       finalArr.push(data);
     }
-    console.log(arr.length);
+
+    console.log(finalArr);
     setFinalArr(finalArr);
   };
 
@@ -57,7 +62,7 @@ const Form = () => {
       fibBuzzArr.push(BigInt(num1));
       fibBuzzArr.push(BigInt(num2));
 
-      for (let x = 1; x < iterations - 1; x++) {
+      for (let x = 1; x < iterations; x++) {
         let currentNum = BigInt(fibBuzzArr[x] + fibBuzzArr[x - 1]);
         fibBuzzArr.push(currentNum);
       }
@@ -82,9 +87,7 @@ const Form = () => {
         }
         fibBuzzArr.push(currentNum);
       }
-
       console.log(fibBuzzArr);
-
       createFinalArr(fibBuzzArr);
     }
   };

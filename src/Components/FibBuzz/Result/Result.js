@@ -8,9 +8,9 @@ export default function DataTable(props) {
   props.useBigInt
     ? (columns = [{ field: "num1", headerName: "", flex: 1, align: "center" }])
     : (columns = [
+        { field: "num0", headerName: "", flex: 1, align: "center" },
         { field: "num1", headerName: "", flex: 1, align: "center" },
         { field: "num2", headerName: "", flex: 1, align: "center" },
-        { field: "num3", headerName: "", flex: 1, align: "center" },
       ]);
 
   rows = props.finalArr;
