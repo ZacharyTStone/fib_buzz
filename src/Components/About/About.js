@@ -9,6 +9,7 @@ const About = () => {
         alignItems: "center",
         width: "100vw",
         height: "70vh",
+        fontSize: "1.5rem",
       }}
     >
       <h1>Hi I'm Zach Stone</h1>
