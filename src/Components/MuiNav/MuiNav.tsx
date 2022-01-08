@@ -1,7 +1,6 @@
 import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import CodeIcon from "@mui/icons-material/Code";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import { Link } from "react-router-dom";
 import DisplaySettingsIcon from "@mui/icons-material/DisplaySettings";
@@ -34,7 +33,7 @@ export default function LabelBottomNavigation() {
         to="/info"
         label="Code"
         value="Code"
-        icon={<CodeIcon />}
+        icon={<PsychologyIcon />}
       />
       <BottomNavigationAction
         component={Link}
@@ -42,13 +41,6 @@ export default function LabelBottomNavigation() {
         label="About"
         value="About"
         icon={<AccountBoxIcon />}
-      />
-      <BottomNavigationAction
-        component={Link}
-        to="/recursive"
-        label="Recursive"
-        value="Recursive"
-        icon={<PsychologyIcon />}
       />
     </BottomNavigation>
   );

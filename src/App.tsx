@@ -4,19 +4,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Form from "./Components/FibBuzz/Form";
 import Info from "./Components/Info/Info";
 import About from "./Components/About/About";
-import Recursive from "./Components/Recursive/Recursive";
+
+import Title from "./Components/Title/Title";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <h1>Fib Buzz</h1>
+        <Title />
         <Nav />
         <Routes>
           <Route path="/" element={<Form />} />
           <Route path="info" element={<Info />} />
           <Route path="about" element={<About />} />
-          <Route path="recursive" element={<Recursive />} />
         </Routes>
       </div>
     </BrowserRouter>
