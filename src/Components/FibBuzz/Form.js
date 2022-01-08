@@ -26,20 +26,24 @@ const Form = () => {
 
   const createFinalArr = (arr) => {
     let finalArr = [];
-    for (let x = 0; x < iterations - 2; x += 3) {
-      finalArr.push({
-        id: x,
-        num1: showNumbers ? fibBuzzArr[x][0] : fibBuzzArr[x][1],
-        num2: showNumbers ? fibBuzzArr[x + 1][0] : fibBuzzArr[x + 1][1],
-        num3: showNumbers ? fibBuzzArr[x + 2][0] : fibBuzzArr[x + 2][1],
-      });
+
+    let num_columns = 3;
+
+    for (let x = 0; x < iterations; x += num_columns) {
+      let data = { id: x };
+      for (let i = 0; i < num_columns; ++i) {
+        if (x + i < iterations) data["num" + (i + 1)] = fibBuzzArr[x + i][0];
+        else data["num" + (i + 1)] = "";
+      }
+      finalArr.push(data);
     }
+    console.log(arr.length);
     setFinalArr(finalArr);
   };
 
   const createBigIntArray = (arr) => {
     let finalArr = [];
-    for (let x = 0; x < iterations - 2; x += 1) {
+    for (let x = 0; x < iterations - 1; x += 1) {
       finalArr.push({
         id: x,
         num1: arr[x],
@@ -62,23 +66,24 @@ const Form = () => {
       fibBuzzArr.push([num1, num1]);
       fibBuzzArr.push([num2, num2]);
 
-      for (let x = 1; x <= iterations - 1; x++) {
-        let currentNum =
-          parseFloat(fibBuzzArr[x][0]) + parseFloat(fibBuzzArr[x - 1][0]);
+      for (let x = 1; x < iterations - 1; x++) {
+        let currentNum = fibBuzzArr[x][0] + fibBuzzArr[x - 1][0];
 
-        if (currentNum === Infinity) {
+        if (currentNum[1] === Infinity) {
           currentNum = ["Infinity", "Infinity"];
         } else if (currentNum % fib === 0 && currentNum % buzz === 0) {
-          currentNum = [currentNum + " Fib Buzz", "Fib Buzz"];
+          currentNum = [currentNum, "Fib Buzz"];
         } else if (currentNum % fib === 0) {
-          currentNum = [currentNum + " Fib ", "Fib"];
+          currentNum = [currentNum, "Fib"];
         } else if (currentNum % buzz === 0) {
-          currentNum = [currentNum + " Buzz", "Buzz"];
+          currentNum = [currentNum, "Buzz"];
         } else {
           currentNum = [currentNum, currentNum];
         }
         fibBuzzArr.push(currentNum);
       }
+
+      console.log(fibBuzzArr);
 
       createFinalArr(fibBuzzArr);
     }
