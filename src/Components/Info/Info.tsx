@@ -1,8 +1,7 @@
 import "../Info/Info.css";
 import PrismCode from "../UI/PrismCode";
 
-const fullCode1 = `
-import React, { useState } from "react";
+const fullCode1 = `import React, { useState } from "react";
 import { TextField } from "@mui/material";
 import { Button } from "@mui/material";
 import Result from "./Result/Result";
@@ -46,7 +45,6 @@ const Form = () => {
       finalArr.push(data);
     }
 
-    console.log(finalArr);
     setFinalArr(finalArr);
   };
 
@@ -91,7 +89,6 @@ const Form = () => {
         }
         fibBuzzArr.push(currentNum);
       }
-      console.log(fibBuzzArr);
       createFinalArr(fibBuzzArr);
     }
   };
@@ -265,12 +262,12 @@ const Form = () => {
                 onClick={() => {
                   setFinalArr([]);
                   setFibBuzzArr([]);
-                  setUseBigInt(!useBigInt);
 
                   if (!useBigInt)
                     alert(
                       "Have fun calculating the fibonacci sequence with bigInt! Reaaaally big numbers!"
                     );
+                  setUseBigInt(!useBigInt);
                 }}
               >
                 {useBigInt
@@ -305,6 +302,7 @@ const Form = () => {
 };
 
 export default Form;
+
 
 `;
 
@@ -361,9 +359,7 @@ export default function DataTable(props) {
 const Info = () => {
   return (
     <div className="Info">
-      <div className="left">
-        <h1>Just the cool bits</h1>
-      </div>
+      <div className="left">{/* <h1>Just the cool bits</h1> */}</div>
       <div className="right">
         <h1>Form.JS</h1>
         <PrismCode code={fullCode1} language="javascript" />

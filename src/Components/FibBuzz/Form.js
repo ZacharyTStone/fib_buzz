@@ -261,12 +261,12 @@ const Form = () => {
                 onClick={() => {
                   setFinalArr([]);
                   setFibBuzzArr([]);
-                  setUseBigInt(!useBigInt);
 
                   if (!useBigInt)
                     alert(
                       "Have fun calculating the fibonacci sequence with bigInt! Reaaaally big numbers!"
                     );
+                  setUseBigInt(!useBigInt);
                 }}
               >
                 {useBigInt
