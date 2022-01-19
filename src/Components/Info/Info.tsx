@@ -485,6 +485,7 @@ const Info = () => {
               height: "fit-content",
               margin: "auto",
             }}
+            alt="a video showing the difference between normal numbers and bigint numbers"
           />
         </div>
       </div>
