@@ -436,8 +436,8 @@ const Info = () => {
           language="javascript"
         />
         <p>
-          I used e.preventDefault() to prevent the form from refreshing and
-          unhid the DataGrid component
+          I use e.preventDefault() to prevent the form from refreshing and
+          unhide the DataGrid component.
         </p>
         <PrismCode
           code={`onst onSubmit = (e) => {
