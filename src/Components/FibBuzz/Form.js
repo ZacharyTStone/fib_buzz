@@ -42,7 +42,6 @@ const Form = () => {
       finalArr.push(data);
     }
 
-    console.log(finalArr);
     setFinalArr(finalArr);
   };
 
@@ -87,7 +86,6 @@ const Form = () => {
         }
         fibBuzzArr.push(currentNum);
       }
-      console.log(fibBuzzArr);
       createFinalArr(fibBuzzArr);
     }
   };

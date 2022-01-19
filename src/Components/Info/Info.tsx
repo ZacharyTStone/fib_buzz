@@ -359,8 +359,141 @@ export default function DataTable(props) {
 const Info = () => {
   return (
     <div className="Info">
-      <div className="left">{/* <h1>Just the cool bits</h1> */}</div>
-      <div className="right">
+      <div
+        style={{
+          maxWidth: "90vw",
+        }}
+      >
+        <h1>Just the cool bits</h1>
+        <p>I used the react hook 'useState' to save the variables</p>
+        <PrismCode
+          code={`
+         const [num1, setNum1] = useState(1);
+         const [num2, setNum2] = useState(1);
+         const [fibBuzzArr, setFibBuzzArr] = useState([]);
+         const [finalArr, setFinalArr] = useState([]);
+         const [fib, setFib] = useState(3);
+         const [buzz, setBuzz] = useState(5);
+         const [iterations, setIterations] = useState(100);
+         const [showNumbers, setShowNumbers] = useState(false);
+         const [useBigInt, setUseBigInt] = useState(false);
+         const [showResultsComponent, setShowResultsComponent] = useState(false);
+         const [showOptionButtons, setShowOptionButtons] = useState(false);
+        `}
+          language="javascript"
+        />
+        <p>
+          The fib buzz function uses for loops and if statments to calculate the
+          nested array.
+        </p>
+        <PrismCode
+          code={`fibBuzzArr.push([num1, num1]);
+          fibBuzzArr.push([num2, num2]);
+    
+          for (let x = 1; x < iterations - 1; x++) {
+            let currentNum = fibBuzzArr[x][0] + fibBuzzArr[x - 1][0];
+    
+            if (currentNum[1] === Infinity) {
+              currentNum = ["Infinity", "Infinity"];
+            } else if (currentNum % fib === 0 && currentNum % buzz === 0) {
+              currentNum = [currentNum, "Fib Buzz"];
+            } else if (currentNum % fib === 0) {
+              currentNum = [currentNum, "Fib"];
+            } else if (currentNum % buzz === 0) {
+              currentNum = [currentNum, "Buzz"];
+            } else {
+              currentNum = [currentNum, currentNum];
+            }
+            fibBuzzArr.push(currentNum);`}
+          language="javascript"
+        />
+        <p>
+          The final array is then built using a foor loop. Material UI is very
+          particular about the format for the Data Grid component. I used an
+          object called data, and pass that in using a ternary operator to
+          either show the number or fib/buzz or the number + fib/buzz
+        </p>
+        <PrismCode
+          code={`let finalArr = [];
+
+          const num_columns = 3;
+      
+          let data = {};
+      
+          for (let x = 0; x < iterations; x += num_columns) {
+            data = { id: x };
+            for (let i = 0; i < num_columns; ++i) {
+              if (x + i < iterations) {
+                data["num" + i] =
+                  (showNumbers ? arr[x + i][0] : "") + fibBuzzArr[x + i][1];
+              } else data["num" + i] = "";
+            }
+            finalArr.push(data);
+          }
+      
+          setFinalArr(finalArr);
+          `}
+          language="javascript"
+        />
+        <p>
+          I used e.preventDefault() to prevent the form from refreshing and
+          unhid the DataGrid component
+        </p>
+        <PrismCode
+          code={`onst onSubmit = (e) => {
+            e.preventDefault();
+            if (!showResultsComponent) {
+              setShowResultsComponent(true);
+            }
+            handleSubmit();
+          };
+          `}
+          language="javascript"
+        />
+        <p>
+          I used the new javascript feature called BigInt to calculate the
+          fibonacci numbers past the normal number limit of javascript. the
+          normal number limit is 2^53 - 1
+        </p>
+        <PrismCode
+          code={` if (useBigInt) {
+            fibBuzzArr.push(BigInt(num1));
+            fibBuzzArr.push(BigInt(num2));
+      
+            for (let x = 1; x < iterations; x++) {
+              let currentNum = BigInt(fibBuzzArr[x] + fibBuzzArr[x - 1]);
+              fibBuzzArr.push(currentNum);
+            }
+            createBigIntArray(fibBuzzArr);
+            `}
+          language="javascript"
+        />
+        <h1>Big int in action</h1>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            flexDirection: "column",
+          }}
+        >
+          <img
+            src="https://media.giphy.com/media/uI4SpAVF8HKC5yVGfE/giphy.gif"
+            style={{
+              width: "60%",
+              height: "fit-content",
+              margin: "auto",
+            }}
+          />
+        </div>
+      </div>
+      <div
+        style={{
+          maxWidth: "90vw",
+        }}
+      >
+        <h1>The Full Code</h1>
+        <br></br>
         <h1>Form.JS</h1>
         <PrismCode code={fullCode1} language="javascript" />
         <h1>Result.Js</h1>
