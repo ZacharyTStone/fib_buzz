@@ -469,6 +469,7 @@ const Info = () => {
           language="javascript"
         />
         <h1>Big int in action</h1>
+        <h1>normal numbers = "infinity", bigint = actual values</h1>
         <div
           style={{
             display: "flex",
