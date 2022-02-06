@@ -387,9 +387,7 @@ const Info = () => {
           nested array.
         </p>
         <PrismCode
-          code={`fibBuzzArr.push([num1, num1]);
-          fibBuzzArr.push([num2, num2]);
-    
+          code={`
           for (let x = 1; x < iterations - 1; x++) {
             let currentNum = fibBuzzArr[x][0] + fibBuzzArr[x - 1][0];
     
