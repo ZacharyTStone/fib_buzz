@@ -37,7 +37,7 @@ Here is that in action (no BigInt = Infinity, BigInt = numbers)
 
 ## Links
 
-- GH-Pages demo site link: (https://fib-buzz.netlify.app/info)
+- GH-Pages demo site link: (https://fib-buzz.netlify.app)
 - Github Repository URL: (https://github.com/zachinjapan/fib_buzz)
 
 
