@@ -115,7 +115,6 @@ const Form = () => {
             margin="normal"
             className="text-form"
             type="number"
-            required
             name="num1"
             label="Fibonachi 1st Number"
             onChange={(e) => {
