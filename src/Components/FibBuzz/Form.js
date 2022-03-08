@@ -118,7 +118,7 @@ const Form = () => {
             name="num1"
             label="Fibonachi 1st Number"
             onChange={(e) => {
-              if (e.target.value < 0 || typeof e.target.value !== "number") {
+              if (e.target.value < 0) {
                 alert("Please enter a positive number");
                 e.target.value = "";
               } else {
